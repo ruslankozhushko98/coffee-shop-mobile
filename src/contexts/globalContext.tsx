@@ -10,7 +10,7 @@ import { User } from 'modules/auth/models';
 
 type ContextOptions = {
   user: User | null;
-  setUser(user: User | null): void;
+  setUser: (user: User | null) => void;
   isLanguageChanging: boolean;
   setIsLanguageChanging: (isLanguageChanging: boolean) => void;
 };
