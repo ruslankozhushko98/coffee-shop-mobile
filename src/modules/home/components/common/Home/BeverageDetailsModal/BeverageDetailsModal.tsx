@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import { useGlobalContext } from 'contexts/globalContext';
-import { useFetchBeverageById } from 'hooks/home/useFetchBeverageById';
-import { useToggleBeverageFavorite } from 'hooks/home/useToggleBeverageFavorite';
+import { useFetchBeverageById } from 'hooks/home/beverages/useFetchBeverageById';
+import { useToggleBeverageFavorite } from 'hooks/home/beverages/useToggleBeverageFavorite';
 import { Queries, Screens } from 'libs/utils/constants';
 import { showAvailableSoonAlert } from 'libs/utils/helpers';
 import { Loading } from 'libs/components/layout/Loading';
@@ -40,6 +40,7 @@ export const BeverageDetailsModal: FC<Props> = ({
         text: t('links:signIn'),
         onPress() {
           setBeverageId(null);
+          // @ts-ignore
           navigate(Screens.SIGN_IN_SCREEN);
         },
       },
@@ -95,7 +96,9 @@ export const BeverageDetailsModal: FC<Props> = ({
           <Loading backgroundColor="white" />
         ) : (
           <BeverageDetailsModalBody
+            title={data?.title || ''}
             description={data?.description || '-'}
+            imgUrl={data?.imgUrl || ''}
             isFavorite={Boolean(data?.isFavorite)}
             toggleFavorite={toggleFavorite}
             addToOrder={handleAddToOrder}

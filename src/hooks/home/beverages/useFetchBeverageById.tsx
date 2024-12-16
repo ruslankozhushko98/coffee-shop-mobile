@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import { Text, useToast } from 'native-base';
 
-import { Queries } from 'libs/utils/constants';
-import { menuService } from 'modules/home/services';
+import { Queries } from '../../../libs/utils/constants';
+import { menuService } from '../../../modules/home/services';
 
 export const useFetchBeverageById = (beverageId: number | null) => {
   const toast = useToast();

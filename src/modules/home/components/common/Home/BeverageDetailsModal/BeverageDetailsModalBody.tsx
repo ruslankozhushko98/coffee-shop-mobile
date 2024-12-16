@@ -2,23 +2,27 @@ import React, { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Button, Text, View } from 'native-base';
+import { Button, Text, View, Image } from 'native-base';
 
-import CoffeeIcon from 'libs/assets/icons/coffee.svg';
 import { normalize } from 'libs/utils/helpers';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from 'libs/utils/constants';
 
 import { styles } from './styles';
+import { boolean, string } from 'yup';
 
 type Props = {
+  title: string;
   description: string;
+  imgUrl: string;
   isFavorite: boolean;
   toggleFavorite: () => void;
   addToOrder: () => void;
 };
 
 export const BeverageDetailsModalBody: FC<Props> = ({
+  title,
   description,
+  imgUrl,
   isFavorite,
   toggleFavorite,
   addToOrder,
@@ -27,10 +31,13 @@ export const BeverageDetailsModalBody: FC<Props> = ({
 
   return (
     <View px={5}>
-      <CoffeeIcon
-        style={styles.coffeeIcon}
-        width={SCREEN_WIDTH * 0.7}
-        height={SCREEN_HEIGHT * 0.3}
+      <Image
+        alt={title}
+        source={{ uri: imgUrl }}
+        alignSelf="center"
+        size={300}
+        mt={5}
+        rounded="xl"
       />
 
       <View>

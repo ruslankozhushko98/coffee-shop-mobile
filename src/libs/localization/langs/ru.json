@@ -116,6 +116,7 @@
   "home": {
     "menu": "Меню",
     "noBeverageMessage": "Напитков не найдено!",
+    "noOrdersMessage": "Заказов не найдено!",
     "noFavoriteBeverageMessage": "Избранных напитков не найдено!",
     "beveragesTabs": {
       "all": {

@@ -60,7 +60,7 @@ export const HomeStack: FC = () => {
           component={HomeScreen}
           options={{
             tabBarIcon: renderTabBarIcon('home'),
-            tabBarLabel: renderTabBarLabel(t('bottomTabs:home')),
+            tabBarLabel: renderTabBarLabel(`${t('bottomTabs:home')}`),
           }}
         />
 
@@ -69,7 +69,7 @@ export const HomeStack: FC = () => {
           component={OrdersScreen}
           options={{
             tabBarIcon: renderTabBarIcon('receipt'),
-            tabBarLabel: renderTabBarLabel(t('bottomTabs:orders')),
+            tabBarLabel: renderTabBarLabel(`${t('bottomTabs:orders')}`),
           }}
         />
 
@@ -78,7 +78,7 @@ export const HomeStack: FC = () => {
           component={ProfileStack}
           options={{
             tabBarIcon: renderTabBarIcon('account-circle'),
-            tabBarLabel: renderTabBarLabel(t('bottomTabs:profile')),
+            tabBarLabel: renderTabBarLabel(`${t('bottomTabs:profile')}`),
           }}
         />
       </Tab.Navigator>

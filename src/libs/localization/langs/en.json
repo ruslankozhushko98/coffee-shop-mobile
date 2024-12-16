@@ -115,6 +115,7 @@
   "home": {
     "menu": "Menu",
     "noBeverageMessage": "No beverages found!",
+    "noOrdersMessage": "No orders found!",
     "noFavoriteBeverageMessage": "No favorite beverages found!",
     "beveragesTabs": {
       "all": {

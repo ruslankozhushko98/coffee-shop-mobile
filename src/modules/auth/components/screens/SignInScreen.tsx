@@ -18,10 +18,10 @@ export const SignInScreen: FC = () => {
   const { mutate } = useSignIn();
   const isKeyboardOpened = useKeyboardOpened();
 
-  const handleSubmit = async (
+  const handleSubmit = (
     values: SignInDto,
     { setSubmitting }: FormikHelpers<SignInDto>,
-  ): Promise<void> => {
+  ): void => {
     mutate(values);
     setSubmitting(false);
   };

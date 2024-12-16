@@ -2,8 +2,8 @@ import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { Text, useToast } from 'native-base';
 
-import { Mutations } from 'libs/utils/constants';
-import { menuService } from 'modules/home/services';
+import { Mutations } from '../../../libs/utils/constants';
+import { menuService } from '../../../modules/home/services';
 
 export const useToggleBeverageFavorite = () => {
   const toast = useToast();

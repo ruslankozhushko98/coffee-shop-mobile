@@ -1,3 +1,5 @@
+import { BEVERAGE_TYPES, SIZES } from 'libs/utils/constants';
+
 export interface Beverage {
   id: number;
   title: string;
@@ -5,6 +7,7 @@ export interface Beverage {
   imgUrl: string;
   price: number;
   isFavorite: boolean;
-  createdAt: string;
-  updatedAt: string;
+  size: SIZES;
+  type: BEVERAGE_TYPES;
+  starsCount: number;
 }

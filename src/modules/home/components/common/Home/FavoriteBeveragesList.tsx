@@ -3,7 +3,7 @@ import { ListRenderItem, RefreshControl } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text } from 'native-base';
 
-import { useFetchFavoriteBeverages } from 'hooks/home/useFetchFavoriteBeverages';
+import { useFetchFavoriteBeverages } from 'hooks/home/beverages/useFetchFavoriteBeverages';
 import { useGlobalContext } from 'contexts/globalContext';
 import { Loading } from 'libs/components/layout/Loading';
 import { BeverageOpts } from 'modules/home/utils/types';

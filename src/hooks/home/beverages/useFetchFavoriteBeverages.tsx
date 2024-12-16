@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { useGlobalContext } from 'contexts/globalContext';
-import { Queries } from 'libs/utils/constants';
-import { menuService } from 'modules/home/services';
+import { useGlobalContext } from '../../../contexts/globalContext';
+import { Queries } from '../../../libs/utils/constants';
+import { menuService } from '../../../modules/home/services';
 
 export const useFetchFavoriteBeverages = () => {
   const { user } = useGlobalContext();

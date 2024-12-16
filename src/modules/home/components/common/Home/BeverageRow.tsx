@@ -5,7 +5,7 @@ import { Text } from 'native-base';
 import { formatPrice } from 'libs/utils/helpers';
 import { BeverageOpts } from 'modules/home/utils/types';
 
-import { styles } from './styles';
+import { styles } from 'modules/home/components/common/styles';
 
 type Props = {
   onSelectItem: () => void;

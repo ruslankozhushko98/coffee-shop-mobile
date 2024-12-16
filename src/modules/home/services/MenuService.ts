@@ -1,6 +1,7 @@
 import { httpClient } from 'libs/config/httpClient';
 import { Beverage } from 'modules/home/models';
 import {
+  AddToOrderDto,
   BeverageOpts,
   FavoriteBeverageOpts,
   ToggleBeverageFavoriteDto,
@@ -42,6 +43,16 @@ class MenuService {
     dto: ToggleBeverageFavoriteDto,
   ): Promise<ToggleBeverageFavoriteDto> {
     const { data } = await httpClient.put('/menu/toggle-favorite', dto);
+    return data;
+  }
+
+  public async fetchOrders(): Promise<any> {
+    const { data } = await httpClient.get('/orders');
+    return data;
+  }
+
+  public async addToOrder(dto: AddToOrderDto): Promise<any> {
+    const { data } = await httpClient.post('/orders/create', dto);
     return data;
   }
 }

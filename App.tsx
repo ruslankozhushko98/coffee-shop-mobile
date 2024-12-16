@@ -1,36 +1,18 @@
-/* eslint-disable react/no-unstable-nested-components */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { I18nextProvider } from 'react-i18next';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import { NativeBaseProvider } from 'native-base';
 
 import { GlobalContextProvider } from 'contexts/globalContext';
+import i18n from 'libs/localization/i18n';
 import { queryClient } from 'libs/config/queryClient';
-import { Screens } from 'libs/utils/constants';
-import { SignInScreen } from 'modules/auth/components/screens/SignInScreen';
-import { SignUpScreen } from 'modules/auth/components/screens/SignUpScreen';
-import { SignUpLink } from 'modules/auth/components/layout/SignUpLink';
-import { SignInLink } from 'modules/auth/components/layout/SignInLink';
-import { BackLink } from 'modules/auth/components/layout/BackLink';
-import { AccountActivationScreen } from 'modules/account/components/screens/AccountActivationScreen';
-import { ForgotPasswordStack } from 'modules/forgot-password/navigation/ForgotPasswordStack';
-import { HomeStack } from 'modules/home/navigation/HomeStack';
-
-const RootNavigationStack = createStackNavigator();
+import { LANGS } from 'libs/utils/constants';
+import { RootNavStack } from 'modules/navigation/RootNavigationStack';
 
 function App(): React.JSX.Element {
-  const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
 
   const style = {
@@ -40,66 +22,22 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={style}>
-      <QueryClientProvider client={queryClient}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={style.backgroundColor}
-        />
+      <I18nextProvider i18n={i18n} defaultNS={LANGS.EN}>
+        <QueryClientProvider client={queryClient}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={style.backgroundColor}
+          />
 
-        <NativeBaseProvider>
-          <NavigationContainer>
-            <GlobalContextProvider>
-              <RootNavigationStack.Navigator
-                initialRouteName={Screens.HOME_STACK}
-              >
-                <RootNavigationStack.Screen
-                  name={Screens.SIGN_IN_SCREEN}
-                  component={SignInScreen}
-                  options={{
-                    title: t('auth:signInScreen:header:title'),
-                    headerRight: () => <SignUpLink />,
-                    headerLeft: () => <BackLink />,
-                  }}
-                />
-
-                <RootNavigationStack.Screen
-                  name={Screens.SIGN_UP_SCREEN}
-                  component={SignUpScreen}
-                  options={{
-                    title: t('auth:signUpScreen:header:title'),
-                    headerLeft: () => <SignInLink />,
-                  }}
-                />
-
-                <RootNavigationStack.Screen
-                  name={Screens.ACCOUNT_ACTIVATION}
-                  component={AccountActivationScreen}
-                  options={{
-                    title: t('accountActivationScreen:header:title'),
-                  }}
-                />
-
-                <RootNavigationStack.Screen
-                  name={Screens.HOME_STACK}
-                  component={HomeStack}
-                  options={{
-                    gestureEnabled: false,
-                    headerShown: false,
-                  }}
-                />
-
-                <RootNavigationStack.Screen
-                  name={Screens.FORGOT_PASSWORD_STACK}
-                  component={ForgotPasswordStack}
-                  options={{
-                    headerShown: false,
-                  }}
-                />
-              </RootNavigationStack.Navigator>
-            </GlobalContextProvider>
-          </NavigationContainer>
-        </NativeBaseProvider>
-      </QueryClientProvider>
+          <NativeBaseProvider>
+            <NavigationContainer>
+              <GlobalContextProvider>
+                <RootNavStack />
+              </GlobalContextProvider>
+            </NavigationContainer>
+          </NativeBaseProvider>
+        </QueryClientProvider>
+      </I18nextProvider>
     </SafeAreaView>
   );
 }

@@ -3,7 +3,7 @@ import { ListRenderItem } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Text } from 'native-base';
 
-import { useFetchBeverages } from 'hooks/home/useFetchBeverages';
+import { useFetchBeverages } from 'hooks/home/beverages/useFetchBeverages';
 import { useDebounce } from 'hooks/useDebounce';
 import { DEBOUNCE_DELAY } from 'libs/utils/constants';
 import { Loading } from 'libs/components/layout/Loading';

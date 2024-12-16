@@ -22,3 +22,10 @@ export type EditProfileDto = {
 };
 
 export type EditProfileValues = Omit<EditProfileDto, 'id'>;
+
+export type AddToOrderDto = {
+  price: number;
+  beverages: Array<Beverage>;
+  starsCount: number;
+  additionally?: string;
+};
