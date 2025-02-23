@@ -1,27 +1,16 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import SecureStore from 'expo-secure-store';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import * as SecureStore from 'expo-secure-store';
 
 import { SecureStoreKeys } from '@/libs/utils/enum';
 import { AuthResponse, SignInDto, SignUpDto } from '@/libs/utils/types';
+import { getBaseQuery } from '@/libs/utils/baseQuery';
 import { User } from '@/models';
 import { setUser } from './auth.slice';
 
 export const authApi = createApi({
   reducerPath: 'auth',
 
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.EXPO_PUBLIC_BASE_URL,
-
-    prepareHeaders(headers) {
-      const accessToken = SecureStore.getItemAsync(SecureStoreKeys.ACCESS_TOKEN);
-
-      if (accessToken) {
-        headers.set('Authorization', `Bearer ${accessToken}`);
-      }
-
-      return headers;
-    },
-  }),
+  baseQuery: getBaseQuery(),
 
   endpoints: (builder) => ({
     signIn: builder.mutation<AuthResponse, SignInDto>({
