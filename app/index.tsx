@@ -6,9 +6,11 @@ import {
   View,
   ActivityIndicator,
   TouchableOpacity,
+  ListRenderItem,
 } from 'react-native';
 
 import { useDebounce } from '@/hooks/useDebounce';
+import { Beverage } from '@/models';
 import { useFetchAllBeveragesQuery } from '@/store/menu/menu.api';
 import { SearchBar } from '@/components/common/Home/SearchBar';
 
@@ -43,6 +45,21 @@ export default function Index() {
   const debouncedValue = useDebounce<string>(search, 750);
   const { isLoading, data } = useFetchAllBeveragesQuery(debouncedValue || '');
 
+  const renderItem: ListRenderItem<Beverage> = ({ item }) => (
+    <TouchableOpacity key={item.id} style={styles.listItem}>
+      <Text style={styles.listItemText}>{item.title}</Text>
+      <Text style={styles.listItemText}>${Number(item.price).toFixed(2)}</Text>
+    </TouchableOpacity>
+  );
+
+  const renderListEmptyComponent = () => {
+    if (isLoading) {
+      return <ActivityIndicator size="large" color="#00f" />;
+    }
+
+    return <Text>No beverages found!</Text>;
+  };
+
   return (
     <View style={styles.container}>
       <SearchBar value={search} onChangeText={setSearch} />
@@ -50,19 +67,8 @@ export default function Index() {
       <FlatList
         style={styles.list}
         data={data}
-        renderItem={({ item }) => (
-          <TouchableOpacity key={item.id} style={styles.listItem}>
-            <Text style={styles.listItemText}>{item.title}</Text>
-            <Text style={styles.listItemText}>${Number(item.price).toFixed(2)}</Text>
-          </TouchableOpacity>
-        )}
-        ListEmptyComponent={() => {
-          if (isLoading) {
-            return <ActivityIndicator size="large" color="#00f" />;
-          }
-
-          return <Text>No beverages found!</Text>;
-        }}
+        renderItem={renderItem}
+        ListEmptyComponent={renderListEmptyComponent}
       />
     </View>
   );
