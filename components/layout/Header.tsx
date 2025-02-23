@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
 export const Header: FC = () => {
   return (
     <View style={styles.header}>
-      <Link href="/" style={styles.link}>
+      <Link href="/(menu)" style={styles.link}>
         Header
       </Link>
 
-      <Link href="/sign-in" style={styles.link}>
+      <Link href="/auth/sign-in" style={styles.link}>
         Sign In
       </Link>
     </View>

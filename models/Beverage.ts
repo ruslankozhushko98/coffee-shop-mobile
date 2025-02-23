@@ -5,6 +5,7 @@ export interface Beverage {
   imgUrl: string;
   price: number;
   starsCount: number;
+  isFavorite: boolean;
   createdAt: string;
   updatedAt: string;
 }

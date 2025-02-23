@@ -34,7 +34,7 @@ export const menuApi = createApi({
 
     toggleBeverageFavorite: builder.mutation<Beverage, number>({
       query: (beverageId) => ({
-        url: `/menu/${beverageId}/toggle-favorite`,
+        url: `/menu/beverages/${beverageId}/toggle-favorite`,
         method: 'PUT',
       }),
     }),

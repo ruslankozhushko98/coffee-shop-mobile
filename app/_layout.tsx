@@ -18,15 +18,13 @@ export default function RootLayout() {
           }}
         >
           <Stack.Screen
-            name="index"
+            name="(menu)"
             options={{
               animation: 'slide_from_left',
             }}
           />
 
-          <Stack.Screen
-            name="sign-in"
-          />
+          <Stack.Screen name="/auth/sign-in" />
         </Stack>
       </View>
     </Provider>
