@@ -19,18 +19,18 @@ export default function BeverageDetailsScreen() {
         <ActivityIndicator size="large" color="#00f" />
       ) : (
         <>
-          <Image source={{ uri: data!.imgUrl }} style={styles.img} />
+          <Image source={{ uri: data?.imgUrl }} style={styles.img} />
 
           <View style={styles.body}>
             <View>
               <Text style={styles.title}>
-                {data!.title} - {getCashFormat(data!.price)}
+                {data?.title} - {getCashFormat(Number(data?.price))}
               </Text>
 
-              <Text style={styles.subtitle}>Stars: {data!.starsCount}</Text>
+              <Text style={styles.subtitle}>Stars: {data?.starsCount}</Text>
 
               <Text style={styles.subtitle}>
-                {data!.description}
+                {data?.description}
               </Text>
             </View>
 
@@ -39,7 +39,7 @@ export default function BeverageDetailsScreen() {
               disabled={isToggling}
               onPress={handleToggleFavorite}
             >
-              <Icon name={data!.isFavorite ? 'star' : 'star-o'} size={30} color="orange" />
+              <Icon name={data?.isFavorite ? 'star' : 'star-o'} size={30} color="orange" />
             </TouchableOpacity>
           </View>
         </>

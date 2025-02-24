@@ -1,12 +1,18 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
+import { Link } from 'expo-router';
 
-const SignInScreen: FC = () => {
+export default function SignInScreen() {
   return (
     <View>
       <Text>Sign In Screen</Text>
+
+      <Text>
+        Don't have an account?{' '}
+        <Link href="/auth/sign-up" style={{ color: '#00f' }}>
+          Sign Up
+        </Link>
+      </Text>
     </View>
   );
 };
-
-export default SignInScreen;

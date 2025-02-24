@@ -24,7 +24,21 @@ export default function RootLayout() {
             }}
           />
 
-          <Stack.Screen name="/auth/sign-in" />
+          <Stack.Screen
+            name="auth/sign-in"
+            options={{
+              animation: 'slide_from_right',
+            }}
+          />
+
+          <Stack.Screen
+            name="auth/sign-up"
+            options={{
+              animation: 'slide_from_right',
+            }}
+          />
+
+          <Stack.Screen name="+not-found" />
         </Stack>
       </View>
     </Provider>
