@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleFavoriteBtn: {
-    marginRight: '2%',
+    position: 'absolute',
+    right: 0,
   },
 });

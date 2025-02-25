@@ -17,7 +17,7 @@ import { SearchBar } from '@/components/common/Home/SearchBar';
 const DEBOUNCE = 750;
 
 export default function Index() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>('');
   const debouncedValue = useDebounce<string>(search, DEBOUNCE);
   const { isLoading, data } = useFetchAllBeveragesQuery(debouncedValue || '');
 
